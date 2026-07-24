@@ -10,13 +10,78 @@ import music from "../../assets-yt clone/music.png";
 import blogs from "../../assets-yt clone/blogs.png";
 import news from "../../assets-yt clone/news.png";
 import jack from "../../assets-yt clone/jack.png";
-import simon from "../../assets-yt clone/sports.png";
+import simon from "../../assets-yt clone/simon.png";
 import tom from "../../assets-yt clone/tom.png";
 import megan from "../../assets-yt clone/megan.png";
 import cameron from "../../assets-yt clone/cameron.png";
 
 const Sidebar = () => {
-  return <div></div>;
+  return (
+    <div className="sidebar">
+      <div className="shortcut-links">
+        <div className="side-link">
+          <img src={home} alt="" />
+          <p>Home</p>
+        </div>
+        <div className="side-link">
+          <img src={game_icon} alt="" />
+          <p>Gaming</p>
+        </div>
+        <div className="side-link">
+          <img src={automobiles} alt="" />
+          <p>Automobiles</p>
+        </div>
+        <div className="side-link">
+          <img src={sports} alt="" />
+          <p>Sports</p>
+        </div>
+        <div className="side-link">
+          <img src={entertainment} alt="" />
+          <p>Entertainment</p>
+        </div>
+        <div className="side-link">
+          <img src={tech} alt="" />
+          <p>Technology</p>
+        </div>
+        <div className="side-link">
+          <img src={music} alt="" />
+          <p>Music</p>
+        </div>
+        <div className="side-link">
+          <img src={blogs} alt="" />
+          <p>Blogs</p>
+        </div>
+        <div className="side-link">
+          <img src={news} alt="" />
+          <p>News</p>
+        </div>
+        <hr />
+      </div>
+      <div className="subscribed-list">
+        <h3>Subscribed</h3>
+        <div className="side-link">
+          <img src={jack} alt="" />
+          <p>PewDiePie</p>
+        </div>
+        <div className="side-link">
+          <img src={simon} alt="" />
+          <p>Mr. Beast</p>
+        </div>
+        <div className="side-link">
+          <img src={tom} alt="" />
+          <p>Justin Bieber</p>
+        </div>
+        <div className="side-link">
+          <img src={megan} alt="" />
+          <p>5-Minute Crafts</p>
+        </div>
+        <div className="side-link">
+          <img src={cameron} alt="" />
+          <p>Nas Daily</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Sidebar;
