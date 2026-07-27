@@ -15,9 +15,9 @@ import tom from "../../assets-yt clone/tom.png";
 import megan from "../../assets-yt clone/megan.png";
 import cameron from "../../assets-yt clone/cameron.png";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebar }) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${sidebar ? "" : "small-sidebar"}`}>
       <div className="shortcut-links">
         <div className="side-link">
           <img src={home} alt="" />
