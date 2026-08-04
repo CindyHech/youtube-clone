@@ -10,6 +10,7 @@ import thumbnail7 from "../../assets-yt clone/thumbnail7.png";
 import thumbnail8 from "../../assets-yt clone/thumbnail8.png";
 import { Link } from "react-router-dom";
 import { API_KEY, value_converter } from "../../data";
+import moment from "moment/moment";
 
 const Feed = ({ category }) => {
   const [data, setData] = useState([]);
@@ -38,7 +39,7 @@ const Feed = ({ category }) => {
             <h3>{item.snippet.channelTitle}</h3>
             <p>
               {value_converter(item.statistics.viewCount)} views &bull;
-              {item.snippet.publishedAt}
+              {moment(item.snippet.publishedAt).fromNow()}
             </p>
           </Link>
         );
