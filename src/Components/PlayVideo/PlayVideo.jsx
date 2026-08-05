@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PlayVideo.css";
 import video1 from "../../assets-yt clone/video.mp4";
 import like from "../../assets-yt clone/like.png";
@@ -7,9 +7,23 @@ import share from "../../assets-yt clone/share.png";
 import save from "../../assets-yt clone/save.png";
 import jack from "../../assets-yt clone/jack.png";
 import user_profile from "../../assets-yt clone/user_profile.jpg";
+import { API_KEY, value_converter } from "../../data";
+import moment from "moment/moment";
 
 const PlayVideo = ({ videoId }) => {
   const [apiData, setApiData] = useState(null);
+
+  const fetchVideoData = async () => {
+    // fetching videos data
+    const videoDetails_url = ` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
+    await fetch(videoDetails_url)
+      .then((res) => res.json())
+      .then((data) => setApiData(data.items[0]));
+  };
+
+  useEffect(() => {
+    fetchVideoData();
+  }, []);
 
   return (
     <div className="play-video">
@@ -21,9 +35,12 @@ const PlayVideo = ({ videoId }) => {
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe>{" "}
-      <h3>Best Youtube Channel To Learn Web Development</h3>
+      <h3>{apiData ? apiData.snippet.title : "Title Here"}</h3>
       <div className="play-video-info">
-        <p>1525 Views &bull; 2 days ago</p>
+        <p>
+          {apiData ? value_converter(apiData.statistics.viewCount) : "16K"}Views
+          &bull; {apiData ? moment(apiData.snippet.publishedAt).fromNow() : ""}
+        </p>
         <div>
           <span>
             <img src={like} alt="" />
