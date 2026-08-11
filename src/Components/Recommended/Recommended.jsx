@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Recommended.css";
 import thumbnail1 from "../../assets-yt clone/thumbnail1.png";
 import thumbnail2 from "../../assets-yt clone/thumbnail2.png";
@@ -9,7 +9,16 @@ import thumbnail6 from "../../assets-yt clone/thumbnail6.png";
 import thumbnail7 from "../../assets-yt clone/thumbnail7.png";
 import thumbnail8 from "../../assets-yt clone/thumbnail8.png";
 
-const Recommended = () => {
+const Recommended = ({ categoryId }) => {
+  const [apiData, setApiData] = useState([]);
+
+  const fetchData = async () => {
+    const relatedVideo__url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&videoCategoryId=${categoryId}0&key=${API_KEY}`;
+    await fetch(relatedVideo__url)
+      .then((res) => res.json())
+      .then((data) => setApiData());
+  };
+
   return (
     <div className="recommended">
       <div className="side-video-list">
